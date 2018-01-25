@@ -9,12 +9,10 @@
 - hosts: localhost
   become: no
   tasks:
-  # - debug: msg="Test"
+  - debug: msg="Test"
   - copy:
     src: ~/.ssh/openstack.pem
     dest: /var/lib/awx/.ssh/openstack.pem
-    owner: root
-    group: root
     mode: 0644
   - shell: ls -la /var/lib/awx/.ssh/
     register: result
@@ -22,11 +20,11 @@
       var: result
       verbosity: 2
 
-- hosts: jumpbox
-  roles:
-     - { role: ../../roles/osp.network} 
-     - { role: ../../roles/osp.keypair } 
-     - { role: ../../roles/osp.security }
-     - { role: ../../roles/osp.flavor }
-     - { role: ../../roles/osp.servers }
+# - hosts: jumpbox
+#   roles:
+#      - { role: ../../roles/osp.network} 
+#      - { role: ../../roles/osp.keypair } 
+#      - { role: ../../roles/osp.security }
+#      - { role: ../../roles/osp.flavor }
+#      - { role: ../../roles/osp.servers }
      

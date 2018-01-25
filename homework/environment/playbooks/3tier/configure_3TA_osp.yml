@@ -53,18 +53,3 @@
     - { role: ../../roles/smoke.test }
 
 
-- hosts: localhost
-  become: no
-  tasks:
-  # - debug: msg="Test"
-  - copy:
-    src: ~/.ssh/openstack.pem
-    dest: /var/lib/awx/.ssh/openstack.pem
-    owner: root
-    group: root
-    mode: 0644
-  - shell: ls -la /var/lib/awx/.ssh/
-    register: result
-  - debug:
-      var: result
-      verbosity: 2
