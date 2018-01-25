@@ -6,7 +6,7 @@
 #   - debug: msg="Test"
 # identity file /var/lib/awx/.ssh/openstack.pem
 # so you will create a playbook which will tower inventory and local credential to copy openstack.pem
-- hosts: tower
+- hosts: localhost
   become: no
   tasks:
   - debug: msg="Test"
