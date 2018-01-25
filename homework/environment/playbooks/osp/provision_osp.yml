@@ -1,5 +1,27 @@
 ---
 # Use Jumpbox to provision OpenStack
+# - hosts: localhost
+#   become: no
+#   tasks:
+#   - debug: msg="Test"
+# identity file /var/lib/awx/.ssh/openstack.pem
+# so you will create a playbook which will tower inventory and local credential to copy openstack.pem
+- hosts: localhost
+  become: no
+  tasks:
+  # - debug: msg="Test"
+  - copy:
+    src: ~/.ssh/openstack.pem
+    dest: /var/lib/awx/.ssh/openstack.pem
+    owner: root
+    group: root
+    mode: 0644
+  - shell: ls -la /var/lib/awx/.ssh/
+    register: result
+  - debug:
+      var: result
+      verbosity: 2
+
 - hosts: jumpbox
   roles:
      - { role: ../../roles/osp.network} 
@@ -7,3 +29,4 @@
      - { role: ../../roles/osp.security }
      - { role: ../../roles/osp.flavor }
      - { role: ../../roles/osp.servers }
+     

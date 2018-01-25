@@ -1,2 +1,0 @@
-[jumpbox]
-workstation-1c39.rhpds.opentlc.com ansible_ssh_user=cloud-user ansible_ssh_private_key_file=~/.ssh/openstack.pem

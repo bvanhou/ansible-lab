@@ -1,3 +1,0 @@
----
-# vars file for application1
-tomcat_web_root:  /usr/share/tomcat/webapps/ROOT

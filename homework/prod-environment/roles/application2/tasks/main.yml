@@ -1,6 +1,0 @@
----
-# tasks file for application2
-  - name: Install App2
-    template:
-      src: index.html.app2
-      dest: "{{tomcat_web_root}}/index.html"

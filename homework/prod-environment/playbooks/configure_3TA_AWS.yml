@@ -1,8 +1,0 @@
----
-#(Include smoke test task)
-- name: smokeTest
-  hosts: jumpbox
-  gather_facts: false
-  become: true
-  roles:
-    - { role: "./roles/check" }

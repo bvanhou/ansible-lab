@@ -1,9 +1,0 @@
----
-# List of package dependencies.
-os_shade_package_dependencies:
-  - gcc
-  - libffi-devel
-  - openssl-devel
-  - python-devel
-  - python-pip
-  - python-virtualenv

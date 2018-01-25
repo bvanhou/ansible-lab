@@ -1,8 +1,0 @@
----
-#(Runs if other tasks fail, destroy OSP instances)
-- name: Clean up 3teir on OSP
-  hosts: jumpbox
-  roles:
-   - { role: cleaner }
-  tags:
-    - clean
