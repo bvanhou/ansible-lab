@@ -7,6 +7,12 @@
   tags:
     - smokeTest
 
+# - name: Test
+#   debug: var=item
+#   with_items: "{{openstack_servers|json_query('accessIPv4')}}"
+#   tags:
+#     - smokeTest
+
 - name: Curl website
   uri:
     url: "http://{{item.accessIPv4}}"
@@ -17,7 +23,7 @@
   tags:
     - smokeTest
 
-- name: Fail if Status Code is not 20
+- name: Fail if Status Code is not 200
   fail:
   when: item.status != 200
   with_items: 
