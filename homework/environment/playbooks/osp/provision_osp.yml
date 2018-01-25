@@ -6,19 +6,22 @@
 #   - debug: msg="Test"
 # identity file /var/lib/awx/.ssh/openstack.pem
 # so you will create a playbook which will tower inventory and local credential to copy openstack.pem
+
+# wget http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pub
+# cat openstack.pub  >> /home/cloud-user/.ssh/authorized_keys
+#
+
 - hosts: localhost
   become: no
   tasks:
-  - debug: msg="Test"
-  - copy:
-      src: ~/.ssh/openstack.pem
+  - file: path=/var/lib/awx/.ssh state=directory
+    owner: awx
+    group: awx
+  - get_url:
+      url: http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pem
       dest: /var/lib/awx/.ssh/openstack.pem
-      mode: 0644
-  - shell: ls -la /var/lib/awx/.ssh/
-    register: result
-  - debug:
-      var: result
-      verbosity: 2
+      owner: awx
+      mode: 0400
 
 # - hosts: jumpbox
 #   roles:
