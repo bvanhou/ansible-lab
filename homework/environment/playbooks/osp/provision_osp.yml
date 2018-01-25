@@ -14,9 +14,11 @@
 - hosts: localhost
   become: no
   tasks:
-  - file: path=/var/lib/awx/.ssh state=directory
-    owner: awx
-    group: awx
+  - file: 
+      path: /var/lib/awx/.ssh
+      state: directory
+      owner: awx
+      group: awx
   - get_url:
       url: http://www.opentlc.com/download/ansible_bootcamp/openstack_keys/openstack.pem
       dest: /var/lib/awx/.ssh/openstack.pem
