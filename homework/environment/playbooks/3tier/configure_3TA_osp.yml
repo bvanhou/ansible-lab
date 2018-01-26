@@ -7,12 +7,12 @@
   tags:
     - osp.facts
 
-- name: Setup RedHat Repositories
-  hosts: all
-  roles:
-   - { role: ../../roles/repo-config }
-  tags:
-    - setup-repos
+# - name: Setup RedHat Repositories
+#   hosts: all
+#   roles:
+#    - { role: ../../roles/repo-config }
+#   tags:
+#     - setup-repos
 
 - name: Setup HAProxy
   hosts: frontends
