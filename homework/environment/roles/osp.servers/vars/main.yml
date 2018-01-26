@@ -1,6 +1,15 @@
 ---
 # vars file for osp.servers
 osp_servers:
+  frontend:
+    name: frontend
+    state: present
+    image: rhel-guest
+    key_name: ansible_ssh
+    flavor: m2.small
+    security_group: frontend
+    meta:
+      - { group: frontends, deployment_name: QA}
   app1:
     name: app1
     state: present
@@ -28,12 +37,3 @@ osp_servers:
     security_group: db
     meta:
       - { group: appdbs, deployment_name: QA}
-  frontend:
-    name: frontend
-    state: present
-    image: rhel-guest
-    key_name: ansible_ssh
-    flavor: m2.small
-    security_group: frontend
-    meta:
-      - { group: frontends, deployment_name: QA}
