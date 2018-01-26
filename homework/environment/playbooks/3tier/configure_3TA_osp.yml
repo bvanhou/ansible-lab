@@ -16,6 +16,7 @@
 
 - name: Setup HAProxy
   hosts: frontends
+  become: yes
   roles:
    - { role: ../../roles/haproxy }
   tags:
@@ -23,6 +24,7 @@
 
 - name: Setup HTTP and Tomcat
   hosts: apps
+  become: yes
   roles:
    - { role: ../../roles/http-tomcat }
   tags:
@@ -30,26 +32,29 @@
 
 - name: Setup application1 
   hosts: apps
+  become: yes
   roles:
    - { role: ../../roles/application1 }
 
 - name: Setup application2 
   hosts: apps
+  become: yes
   roles:
    - { role: ../../roles/application2 }
 
 - name: Setup postgresql
   hosts: appdbs
+  become: yes
   roles:
    - { role: ../../roles/postgresql }
   tags:
     - setup-postgresql270834
 
-# - name: Run Smoke Test on 3Tier Environment
-#   hosts: jumpbox
-#   gather_facts: false
-#   become: true
-#   roles:
-#     - { role: ../../roles/smoke.test }
+- name: Run Smoke Test on 3Tier Environment
+  hosts: jumpbox
+  gather_facts: false
+  become: true
+  roles:
+    - { role: ../../roles/smoke.test }
 
 
