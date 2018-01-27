@@ -1,13 +1,5 @@
 ---
-- name: Clean up 3teir on OSP
-  hosts: jumpbox
-  roles:
-   - { role: cleaner }
-  tags:
-    - clean
-
-
-- name: Configure 3teir on OSP
+- name: Configure 3teir 
   hosts: jumpbox
   roles:
    - { role: osp.facts }

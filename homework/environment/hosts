@@ -1,5 +1,5 @@
 [all:vars]
-#GUID=b9f3
+GUID=7155
 
 [internal:vars]
 
@@ -10,19 +10,21 @@ timeout=60
 ansible_become=yes
 ansible_ssh_user=ec2-user
 
-[all]
-tag_AnsibleGroup_appdbs
-tag_AnsibleGroup_apps
-tag_AnsibleGroup_frontends
+[internal:children]
+frontends
+apps
+appdbs
 
-[jumpbox]
-tag_AnsibleGroup_bastions
+[frontends]
+## These are the frontends
+frontend1 ansible_host=frontend1."{{ GUID }}".internal
 
-[appdbs:children]
-tag_AnsibleGroup_appdbs
+[apps]
+## These are the apps
+app1 ansible_host=app1."{{ GUID }}".internal
+app2 ansible_host=app2."{{ GUID }}".internal
 
-[apps:children]
-tag_AnsibleGroup_apps
+[appdbs]
+## These are the appdbi(s)
+appdb1 ansible_host=appdb1."{{ GUID }}".internal
 
-[frontends:children]
-tag_AnsibleGroup_frontends
