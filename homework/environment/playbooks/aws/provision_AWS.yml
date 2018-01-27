@@ -8,7 +8,7 @@
     - osp.facts
 
 - name: Setup RedHat Repositories
-  hosts: all
+  hosts: apps:frontends:appdbs
   become: yes
   roles:
    - { role: ../../roles/repo-config }
