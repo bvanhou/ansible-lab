@@ -43,7 +43,7 @@
   roles:
    - { role: postgresql }
   tags:
-    - setup-postgresql270834
+    - setup-postgresql
 
 - name: Run Smoke Test on 3Tier Environment
   hosts: jumpbox
