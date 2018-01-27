@@ -10,6 +10,8 @@ timeout=60
 ansible_become=yes
 ansible_ssh_user=ec2-user
 
+[jumpbox]
+tag_AnsibleGroup_bastions
 [appdbs:children]
 tag_AnsibleGroup_appdbs
 [apps:children]
