@@ -26,8 +26,6 @@
   - osp.smoke
 
 
----
-# tasks file for smoke_test
 - name: sleep for 600 seconds and continue with play
   wait_for: timeout=600
   tags: aws.smoke
