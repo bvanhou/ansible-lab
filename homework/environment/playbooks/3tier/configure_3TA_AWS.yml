@@ -3,45 +3,45 @@
 - name: Configure 3teir on AWS
   hosts: jumpbox
   roles:
-   - { role: osp.facts }
+   - { role: ../../roles/osp.facts }
   tags:
     - osp.facts
 
 - name: Setup RedHat Repositories
   hosts: all
   roles:
-   - { role: repo-config }
+   - { role: ../../roles/repo-config }
   tags:
     - setup-repos
 
 - name: Setup HAProxy
   hosts: frontends
   roles:
-   - { role: haproxy }
+   - { role: ../../roles/haproxy }
   tags:
     - setup-haproxy
 
 - name: Setup HTTP and Tomcat
   hosts: apps
   roles:
-   - { role: http-tomcat }
+   - { role: ../../roles/http-tomcat }
   tags:
     - setup-tomcat
 
 - name: Setup application1 
   hosts: apps
   roles:
-   - { role: application1 }
+   - { role: ../../roles/application1 }
 
 - name: Setup application2 
   hosts: apps
   roles:
-   - { role: application2 }
+   - { role: ../../roles/application2 }
 
 - name: Setup postgresql
   hosts: appdbs
   roles:
-   - { role: postgresql }
+   - { role: ../../roles/postgresql }
   tags:
     - setup-postgresql
 
@@ -50,4 +50,4 @@
   gather_facts: false
   become: true
   roles:
-    - { role: "smoke.test" }
+    - { role: ../../roles/smoke.test,  tags: aws.smoke}

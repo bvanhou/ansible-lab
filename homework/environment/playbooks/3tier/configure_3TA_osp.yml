@@ -41,13 +41,13 @@
   roles:
    - { role: ../../roles/postgresql }
   tags:
-    - setup-postgresql270834
+    - setup-postgresql
 
 - name: Run Smoke Test on 3Tier Environment
   hosts: jumpbox
   gather_facts: false
   become: true
   roles:
-    - { role: ../../roles/smoke.test }
+    - { role: ../../roles/smoke.test, tag: osp.smoke }
 
 
