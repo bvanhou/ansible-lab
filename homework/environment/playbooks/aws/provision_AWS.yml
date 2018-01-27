@@ -1,6 +1,7 @@
 ---
 - name: Configure 3teir on AWS
   hosts: jumpbox
+  gather_facts: true
   roles:
    - { role: ../../roles/osp.facts }
   tags:
