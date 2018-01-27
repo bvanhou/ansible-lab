@@ -9,6 +9,7 @@
 
 - name: Setup RedHat Repositories
   hosts: all
+  become: yes
   roles:
    - { role: ../../roles/repo-config }
   tags:
@@ -16,6 +17,7 @@
 
 - name: Setup HAProxy
   hosts: frontends
+  become: yes
   roles:
    - { role: ../../roles/haproxy }
   tags:
@@ -23,6 +25,7 @@
 
 - name: Setup HTTP and Tomcat
   hosts: apps
+  become: yes
   # gather_facts: false
   roles:
    - { role: ../../roles/http-tomcat }
@@ -31,16 +34,19 @@
 
 - name: Setup application1 
   hosts: apps
+  become: yes
   roles:
    - { role: ../../roles/application1 }
 
 - name: Setup application2 
   hosts: apps
+  become: yes
   roles:
    - { role: ../../roles/application2 }
 
 - name: Setup postgresql
   hosts: appdbs
+  become: yes
   roles:
    - { role: ../../roles/postgresql }
   tags:
